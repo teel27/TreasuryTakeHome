@@ -30,7 +30,10 @@ export default function UploadForm({ onResults, isLoading, setIsLoading, setErro
         return;
       }
       setImage(file);
-      setPreview(URL.createObjectURL(file));
+      setPreview((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(file);
+      });
       setError(null);
     },
     [setError],

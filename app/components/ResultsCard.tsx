@@ -40,6 +40,10 @@ export default function ResultsCard({ results }: { results: FieldResult[] }) {
               <span className={`text-sm font-semibold ${cfg.labelClass}`}>{cfg.label}</span>
             </div>
             <p className="mt-1 ml-9 text-sm text-gray-700">{result.reason}</p>
+            <div className="mt-1 ml-9 text-xs text-gray-500 space-y-0.5">
+              <p><span className="font-medium">Label:</span> {result.labelValue !== null ? `"${result.labelValue}"` : '(not legible)'}</p>
+              <p><span className="font-medium">Application:</span> {`"${result.applicationValue}"`}</p>
+            </div>
           </div>
         );
       })}

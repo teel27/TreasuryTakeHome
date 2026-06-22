@@ -126,8 +126,10 @@ Every field resolves to exactly one of **PASS / REVIEW / FAIL**, plus a required
 
 ### Net Contents — deterministic
 
-- Normalize units: `750 mL = 0.75 L`, etc.
-- Compare numerically with ±1 mL tolerance
+- Normalize units to a common base (e.g. mL): `750 mL = 750 mL`, `0.75 L = 750 mL`, `25.4 fl oz ≈ 751.3 mL`
+- Tolerance rules:
+  - **Same unit on both sides:** exact match required, zero tolerance — there is no legitimate reason for two printed values in the same unit to differ
+  - **Cross-unit conversion involved (e.g. fl oz ↔ mL):** apply ±0.05 mL tolerance only to absorb floating-point conversion rounding, not as a general "acceptable variance" buffer
 - **PASS** or **FAIL** only
 - If either value is missing/illegible → **REVIEW**, reason: `"Could not verify — value not legible on label."`
 
@@ -205,6 +207,8 @@ Unit tests for `matching.ts` (independent of Claude API):
 - Brand name FAIL band: below 85% similarity
 - Proof → ABV% conversion (e.g. 90 Proof → 45%)
 - Government warning: exact match PASS, title-case FAIL, rewording FAIL
+- Net Contents same-unit: `750 mL` vs `750 mL` → PASS; `750 mL` vs `751 mL` → FAIL (zero tolerance)
+- Net Contents cross-unit: `25.36 fl oz` → `750.0 mL` vs `750 mL` → PASS (within ±0.05 mL rounding); `25.36 fl oz` vs `760 mL` → FAIL
 
 ---
 

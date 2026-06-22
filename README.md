@@ -25,7 +25,9 @@ AI-powered prototype that verifies alcohol beverage label artwork against TTB ap
 
 4. **Run tests**
    ```bash
-   npm test
+   npm test        # unit tests (33 tests)
+   npm run lint    # ESLint
+   npm run build   # production build check
    ```
 
 ## Approach

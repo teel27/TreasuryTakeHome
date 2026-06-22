@@ -76,6 +76,10 @@ Exact match required. "GOVERNMENT WARNING:" must be all-caps. Any deviation → 
 ANTHROPIC_API_KEY=
 ```
 
+## MCP Tools
+
+**Context7:** Always use Context7 MCP for library/API documentation, code generation, setup, and configuration steps — do not ask the user to request it explicitly.
+
 ## Known Limitations (do not attempt to fix in v1)
 
 - Bold-type detection on Government Warning — not possible from text extraction

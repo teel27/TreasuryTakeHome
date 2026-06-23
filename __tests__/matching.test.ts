@@ -168,6 +168,18 @@ describe('Government Warning matching', () => {
     expect(result.find((r) => r.field === 'Government Warning')!.status).toBe('FAIL');
   });
 
+  it('PASS: all-caps body text matches canonical wording', () => {
+    const allCapsBody = CANONICAL_WARNING.replace(
+      /(?<=GOVERNMENT WARNING: ).+/,
+      (body) => body.toUpperCase(),
+    );
+    const result = verifyLabel(
+      { ...baseExtracted, governmentWarning: { value: allCapsBody, legible: true } },
+      baseApp,
+    );
+    expect(result.find((r) => r.field === 'Government Warning')!.status).toBe('PASS');
+  });
+
   it('FAIL: missing government warning', () => {
     const result = verifyLabel(
       { ...baseExtracted, governmentWarning: { value: null, legible: false } },

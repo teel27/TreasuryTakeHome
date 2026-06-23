@@ -177,7 +177,7 @@ function matchGovernmentWarning(labelValue: string | null): FieldResult {
   const normalizedLabel = labelValue.replace(/\s+/g, ' ').trim();
   const normalizedCanonical = GOVERNMENT_WARNING.replace(/\s+/g, ' ').trim();
 
-  if (normalizedLabel !== normalizedCanonical) {
+  if (normalizedLabel.toLowerCase() !== normalizedCanonical.toLowerCase()) {
     return {
       field: 'Government Warning',
       status: 'FAIL',

@@ -123,6 +123,14 @@ describe('Net Contents matching', () => {
     expect(result.find((r) => r.field === 'Net Contents')!.status).toBe('PASS');
   });
 
+  it('PASS: 12 FL. OZ label vs 355 ml application (conversion rounding)', () => {
+    const result = verifyLabel(
+      { ...baseExtracted, netContents: { value: '12 FL. OZ', legible: true } },
+      { ...baseApp, netContents: '355 ml' },
+    );
+    expect(result.find((r) => r.field === 'Net Contents')!.status).toBe('PASS');
+  });
+
   it('FAIL: cross-unit real mismatch (0.76 L vs 750 mL = 10 mL difference)', () => {
     const result = verifyLabel(
       { ...baseExtracted, netContents: { value: '0.76 L', legible: true } },

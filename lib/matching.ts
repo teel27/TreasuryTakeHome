@@ -128,7 +128,7 @@ function matchNetContents(labelValue: string | null, appValue: string): FieldRes
   }
 
   const isSameUnit = labelParsed.originalUnit === appParsed.originalUnit;
-  const tolerance = isSameUnit ? 0 : 0.05;
+  const tolerance = isSameUnit ? 0 : 0.5;
 
   if (Math.abs(labelParsed.valueMl - appParsed.valueMl) <= tolerance) {
     return {

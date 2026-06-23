@@ -14,7 +14,7 @@ reason for each.
 **Prerequisites:** Node.js 18+, an Anthropic API key.
 
 ```bash
-git clone https://github.com/<your-repo>/TreasuryTakeHome.git
+git clone https://github.com/teel27/TreasuryTakeHome.git
 cd TreasuryTakeHome
 npm install
 cp .env.local.example .env.local   # add your ANTHROPIC_API_KEY
